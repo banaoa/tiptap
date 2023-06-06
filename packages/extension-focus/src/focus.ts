@@ -4,6 +4,7 @@ import { Decoration, DecorationSet } from '@tiptap/pm/view'
 
 export interface FocusOptions {
   className: string
+  // 全部 | 最浅 | 最深
   mode: 'all' | 'deepest' | 'shallowest'
 }
 
@@ -23,11 +24,16 @@ export const FocusClasses = Extension.create<FocusOptions>({
         key: new PluginKey('focus'),
         props: {
           decorations: ({ doc, selection }) => {
+            // isEditable:是否可编辑/只读, isFocused:文档没有?
             const { isEditable, isFocused } = this.editor
+            // anchor: 当选区变化的时候，其不动的一侧
             const { anchor } = selection
+            // decorations: 装饰器是用来影响文档的展现但是又不实际改变文档内容的一种方式。
             const decorations: Decoration[] = []
 
             if (!isEditable || !isFocused) {
+              // DecorationSet: 一个 decorations 集合，用这种数据结构组织它们可以让绘制算法高效的对比和渲染它们。 它是一个不可突变的数据结构，它不改变，更新会产生新的值。
+              // create: 用给定文档的结构，创建一个 decorations 集合。
               return DecorationSet.create(doc, [])
             }
 
