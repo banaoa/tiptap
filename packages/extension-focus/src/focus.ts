@@ -46,16 +46,24 @@ export const FocusClasses = Extension.create<FocusOptions>({
               // 对每一个后代节点调用给定的回调函数 f。当回调处理一个节点的时候返回 false ，则后续不会继续对该节点的子节点再调用该回调了。
               // 注: 上述递归都是深度优先。
               doc.descendants((node, pos) => {
+
                 if (node.isText) {
                   return
                 }
-
+                // https://www.xheldon.com/tech/prosemirror-guide-chinese.html#indexing
+                // nodeSize: 表示该节点的大小，由基于整数的 indexing scheme 决定。 对于文本节点，它是字符数，对于其他叶子节点，是 1。对于非叶子节点，它是其内容的大小加上 2（开始和结束标签）。
+                // isCurrent: 当前选区是否在该节点内
                 const isCurrent = anchor >= pos && anchor <= pos + node.nodeSize - 1
 
+                // anchor: 当前选区的锚点
+                // pos: 当前节点的起始位置
+                // node.nodeSize: 当前节点的大小
+                console.log('node', anchor, pos, node.nodeSize - 1, node.toString())
                 if (!isCurrent) {
+                  // 当回调处理一个节点的时候返回 false ，则后续不会继续对该节点的子节点再调用该回调了。
                   return false
                 }
-
+                // 当前节点的层级
                 maxLevels += 1
               })
             }

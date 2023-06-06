@@ -31,7 +31,7 @@ export default {
         Text,
         Focus.configure({
           className: 'has-focus',
-          mode: 'all',
+          mode: 'deepest',
         }),
         Code,
         BulletList,
@@ -40,15 +40,10 @@ export default {
       autofocus: true,
       content: `
         <p>
-          The focus extension adds a class to the focused node only. That enables you to add a custom styling to just that node. By default, it’ll add <code>.has-focus</code>, even to nested nodes.
+          1234567890
         </p>
         <p>
-          <strong>Try it out!</strong> Click on the list items below to see how it works.
-          <ul>
-            <li>Nested elements (like this list item) will be focused with the default setting of <code>mode: all</code>.</li>
-            <li>Otherwise the whole list will get the focus class, even when just a single list item is selected.</li>
-          </ul>
-          <b></b>
+          2134567890
         </p>
       `,
     })
