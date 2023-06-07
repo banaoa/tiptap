@@ -95,6 +95,8 @@ export const DiffClasses = Extension.create<DiffOptions>({
               decorations.push(
                 Decoration.node(pos, pos + node.nodeSize, {
                   class: this.options.className,
+                  id: '123',
+                  type: 'fff',
                 }),
               )
             })

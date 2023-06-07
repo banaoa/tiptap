@@ -46,9 +46,12 @@ export const Placeholder = Extension.create<PlaceholderOptions>({
             if (!active) {
               return null
             }
-
+            // createAndFill: 和 create 类似，不过该方法会查看是否有必要在给定的 fragment 开始和结尾的地方 添加一些节点，以让该 fragment 适应当前 node。如果没有找到合适的包裹节点，则返回 null。 记住，如果你传递 null 或者 Fragment.empty 作为内容会导致其一定会适合当前 node，因此该方法一定会成
             // only calculate isEmpty once due to its performance impacts (see issue #3360)
             const emptyDocInstance = doc.type.createAndFill()
+
+            // sameMarkup: 比较当前与给定节点的 markup（包含类型、attributes 和 marks）是否相等。如果相同返回 true。
+            // findDiffStart: 寻找当前 fragment 和给定 fragment 的第一个不同的位置，如果它们相同的话返回 null。
             const isEditorEmpty = emptyDocInstance?.sameMarkup(doc)
               && emptyDocInstance.content.findDiffStart(doc.content) === null
 
