@@ -5,8 +5,8 @@
 <script>
 import BulletList from '@tiptap/extension-bullet-list'
 import Code from '@tiptap/extension-code'
+import Diff from '@tiptap/extension-diff'
 import Document from '@tiptap/extension-document'
-import Focus from '@tiptap/extension-focus'
 import ListItem from '@tiptap/extension-list-item'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
@@ -29,7 +29,7 @@ export default {
         Document,
         Paragraph,
         Text,
-        Focus.configure({
+        Diff.configure({
           className: 'has-focus',
           mode: 'deepest',
         }),
