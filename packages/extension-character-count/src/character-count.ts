@@ -69,6 +69,7 @@ export const CharacterCount = Extension.create<CharacterCountOptions, CharacterC
     return [
       new Plugin({
         key: new PluginKey('characterCount'),
+        // 如果有该函数，则该函数会在一个 transaction 被应用到 state 之前调用，以允许插件有机会取消该 transaction（通过返回 false）
         filterTransaction: (transaction, state) => {
           const limit = this.options.limit
 

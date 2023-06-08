@@ -114,10 +114,12 @@ export const Link = Mark.create<LinkOptions>({
   },
 
   parseHTML() {
+    // 匹配 a 标签, 带href, 但是href不是javascript:的
     return [{ tag: 'a[href]:not([href *= "javascript:" i])' }]
   },
 
   renderHTML({ HTMLAttributes }) {
+    // this.options.HTMLAttributes: target: '_blank', rel: 'noopener noreferrer nofollow',class: null,
     return ['a', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
   },
 
