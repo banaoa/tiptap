@@ -5,6 +5,7 @@
 <script>
 import Document from '@tiptap/extension-document'
 import Gapcursor from '@tiptap/extension-gapcursor'
+import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import Image from '@tiptap/extension-image'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
@@ -24,14 +25,20 @@ export default {
   mounted() {
     this.editor = new Editor({
       extensions: [
+        HorizontalRule,
         Document,
         Paragraph,
         Text,
-        Image,
+        Image.configure({
+          inline: false,
+          allowBase64: true,
+        }),
         Gapcursor,
       ],
       content: `
-        <p>Try to move the cursor after the image with your arrow keys! You should see a horizontal blinking cursor below the image. This is the gapcursor.</p>
+        <p>11Try to move the cursor after the image with your arrow keys! You should see a horizontal blinking cursor below the image. This is the gapcursor.</p>
+        <hr>
+        <hr>
         <img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />
       `,
     })
