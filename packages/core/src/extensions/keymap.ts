@@ -1,10 +1,10 @@
 import { Plugin, PluginKey, Selection } from '@tiptap/pm/state'
 
-import { CommandManager } from '../CommandManager'
-import { Extension } from '../Extension'
-import { createChainableState } from '../helpers/createChainableState'
-import { isiOS } from '../utilities/isiOS'
-import { isMacOS } from '../utilities/isMacOS'
+import { CommandManager } from '../CommandManager.js'
+import { Extension } from '../Extension.js'
+import { createChainableState } from '../helpers/createChainableState.js'
+import { isiOS } from '../utilities/isiOS.js'
+import { isMacOS } from '../utilities/isMacOS.js'
 
 export const Keymap = Extension.create({
   name: 'keymap',
@@ -12,6 +12,7 @@ export const Keymap = Extension.create({
   addKeyboardShortcuts() {
     const handleBackspace = () => this.editor.commands.first(({ commands }) => [
       () => commands.undoInputRule(),
+
       // maybe convert first text block node to default node
       () => commands.command(({ tr }) => {
         const { selection, doc } = tr
@@ -32,6 +33,7 @@ export const Keymap = Extension.create({
 
         return commands.clearNodes()
       }),
+
       () => commands.deleteSelection(),
       () => commands.joinBackward(),
       () => commands.selectNodeBackward(),

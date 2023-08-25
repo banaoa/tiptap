@@ -52,17 +52,17 @@ new Editor({
 })
 ```
 
-The rendered HTML will look like that:
+The rendered HTML will look like this:
 
 ```html
-<h1 class="my-custom-heading">Example Text</p>
+<h1 class="my-custom-heading">Example Text</h1>
 <p class="my-custom-paragraph">Wow, that’s really custom.</p>
 ```
 
 If there are already classes defined by the extensions, your classes will be added.
 
 ### Editor
-You can even pass classes to the element which contains the editor like that:
+You can even pass classes to the element which contains the editor:
 
 ```js
 new Editor({
