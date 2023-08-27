@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import Blockquote from '@tiptap/extension-blockquote'
 import Document from '@tiptap/extension-document'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
@@ -28,6 +29,7 @@ export default {
         HorizontalRule,
         Document,
         Paragraph,
+        Blockquote,
         Text,
         Image.configure({
           inline: false,
@@ -39,6 +41,10 @@ export default {
         <p>11Try to move the cursor after the image with your arrow keys! You should see a horizontal blinking cursor below the image. This is the gapcursor.</p>
         <hr>
         <hr>
+        <blockquote>
+          <p>22Try to move the cursor after the image with your arrow keys! You should see a horizontal blinking cursor below the image. This is the gapcursor.</p>
+        </blockquote>
+        <img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />
         <img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />
       `,
     })
@@ -62,4 +68,14 @@ export default {
     height: auto;
   }
 }
+
+// hr {
+//   margin:  60px 0 !important;
+// }
+
+blockquote {
+    border-left: 2px solid rgba(#0d0d0d, 0.1);
+    padding-left: 1rem;
+  }
+
 </style>

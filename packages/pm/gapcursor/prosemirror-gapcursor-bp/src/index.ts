@@ -17,12 +17,12 @@ import { GapCursor } from './gapcursor'
 export function gapCursor(): Plugin {
   return new Plugin({
     props: {
-      decorations: drawGapCursor,
+      // decorations: drawGapCursor,
 
-      createSelectionBetween(_view, $anchor, $head) {
-        console.log(new GapCursor($head))
-        return $anchor.pos == $head.pos && GapCursor.valid($head) ? new GapCursor($head) : null
-      },
+      // createSelectionBetween(_view, $anchor, $head) {
+      //   console.log(new GapCursor($head))
+      //   return $anchor.pos == $head.pos && GapCursor.valid($head) ? new GapCursor($head) : null
+      // },
 
       handleClick,
       handleKeyDown,
@@ -63,7 +63,7 @@ function arrow(axis: 'vert' | 'horiz', dir: number): Command {
 }
 
 function handleClick(view: EditorView, pos: number, event: MouseEvent) {
-  console.log('123123123213')
+  console.log('handleClick')
 
   if (!view || !view.editable) { return false }
   const $pos = view.state.doc.resolve(pos)

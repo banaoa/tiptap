@@ -145,6 +145,7 @@ function closedAfter($pos: ResolvedPos) {
     }
     for (let after = parent.child(index); ; after = after.firstChild!) {
       if ((after.childCount == 0 && !after.inlineContent) || after.isAtom || after.type.spec.isolating) { return true }
+      if (after.type.name === 'blockquote') { return true }
       if (after.inlineContent) { return false }
     }
   }
